@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Work+Sans:wght@300;400;500&display=swap");
+
+:root {
+    --paper: #f3ede1;
+    --ink: #1b2f27;
+    --accent: #c6773a;
+    --frame: rgba(27, 47, 39, 0.18);
+    --shadow: rgba(18, 30, 24, 0.25);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Work Sans", "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: 
+        radial-gradient(1200px 900px at 12% 8%, rgba(255, 247, 231, 0.95), rgba(243, 237, 225, 0.2) 55%, rgba(243, 237, 225, 0) 75%),
+        radial-gradient(900px 700px at 88% 10%, rgba(198, 119, 58, 0.25), rgba(198, 119, 58, 0) 60%),
+        linear-gradient(145deg, #f6efe3 0%, #e9e1d1 55%, #ded3c1 100%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        120deg,
+        rgba(27, 47, 39, 0.06) 0,
+        rgba(27, 47, 39, 0.06) 1px,
+        transparent 1px,
+        transparent 24px
+    );
+    opacity: 0.35;
+    pointer-events: none;
+    z-index: none;
+}
+
+.site-header {
+    padding: 1.5rem 2rem 0;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.nav {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--frame);
+    background: rgba(243, 237, 225, 0.6);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 30px rgba(27, 47, 39, 0.12);
+    animation: floatIn 0.7s ease both;
+}
+
+.nav-btn {
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(27, 47, 39, 0.7);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-btn:hover {
+  color: var(--ink);
+  background: rgba(27, 47, 39, 0.08);
+}
+
+.nav-btn.is-active {
+  color: var(--ink);
+  background: rgba(198, 119, 58, 0.2);
+  border-color: rgba(198, 119, 58, 0.45);
+}
+
+.hero {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 2.5rem 1.5rem 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-card {
+  width: min(420px, 92vw);
+  background: rgba(243, 237, 225, 0.94);
+  border: 1px solid var(--frame);
+  border-radius: 28px;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+  text-align: center;
+  box-shadow: 0 28px 60px var(--shadow);
+  animation: floatIn 0.9s ease both;
+}
+
+.hero-media {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 244, 225, 0.8), rgba(243, 237, 225, 0) 45%),
+    linear-gradient(140deg, rgba(27, 47, 39, 0.92), rgba(198, 119, 58, 0.65));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35), 0 18px 40px rgba(27, 47, 39, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.35), transparent 55%);
+  opacity: 0.5;
+}
+
+.hero-caption {
+  display: grid;
+  gap: 0.35rem;
+  padding-bottom: 0.25rem;
+}
+
+.hero-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(27, 47, 39, 0.6);
+}
+
+.hero-title {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 1.25rem 1rem 0;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-card {
+    width: min(360px, 92vw);
+    padding: 1.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
