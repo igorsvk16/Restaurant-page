@@ -1,63 +1,65 @@
 export default function createContact() {
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("tab", "tab-contact");
+    const content = document.getElementById("content");
+    if (!content) return;
 
-  const card = document.createElement("section");
-  card.classList.add("hero-card", "tab-card");
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("tab", "tab-contact");
 
-  const header = document.createElement("header");
-  header.classList.add("tab-header");
+    const card = document.createElement("section");
+    card.classList.add("hero-card", "tab-card");
 
-  const label = document.createElement("span");
-  label.classList.add("hero-label");
-  label.textContent = "Weƒ?Td love to see you";
+    const header = document.createElement("header");
+    header.classList.add("tab-header");
 
-  const title = document.createElement("h1");
-  title.classList.add("hero-title");
-  title.textContent = "Contact";
+    const label = document.createElement("span");
+    label.classList.add("hero-label");
+    label.textContent = "We'd love to see you";
 
-  const subtitle = document.createElement("p");
-  subtitle.classList.add("tab-subtitle");
-  subtitle.textContent = "Reservations recommended on weekends.";
+    const title = document.createElement("h1");
+    title.classList.add("hero-title");
+    title.textContent = "Contact";
 
-  header.append(label, title, subtitle);
+    const subtitle = document.createElement("p");
+    subtitle.classList.add("tab-subtitle");
+    subtitle.textContent = "Reservations recommended on weekends.";
 
-  const list = document.createElement("div");
-  list.classList.add("contact-list");
+    header.append(label, title, subtitle);
 
-  const rows = [
-    { icon: "ÐY"?", title: "Address", value: "Helsinki, Harbor Street 12" },
-    { icon: "ÐY"z", title: "Phone", value: "+358 40 123 45 67" },
-    { icon: "ÐY'", title: "Hours", value: "Monƒ?"Sun: 12:00ƒ?"23:00" },
-    { icon: "ƒo%‹÷?", title: "Email", value: "hello@pineandember.example" },
-  ];
+    const list = document.createElement("div");
+    list.classList.add("contact-list");
 
-  rows.forEach((r) => {
-    const item = document.createElement("div");
-    item.classList.add("contact-item");
+    const rows = [
+        { icon: "MAP", title: "Address", value: "Helsinki, Harbor Street 12" },
+        { icon: "TEL", title: "Phone", value: "+358 40 123 45 67" },
+        { icon: "HRS", title: "Hours", value: "Mon-Sun: 12:00-23:00" },
+        { icon: "MAIL", title: "Email", value: "hello@pineandember.example" },
+    ];
 
-    const icon = document.createElement("div");
-    icon.classList.add("contact-icon");
-    icon.textContent = r.icon;
+    rows.forEach((r) => {
+        const item = document.createElement("div");
+        item.classList.add("contact-item");
 
-    const text = document.createElement("div");
-    text.classList.add("contact-text");
+        const icon = document.createElement("div");
+        icon.classList.add("contact-icon");
+        icon.textContent = r.icon;
 
-    const t = document.createElement("div");
-    t.classList.add("contact-title");
-    t.textContent = r.title;
+        const text = document.createElement("div");
+        text.classList.add("contact-text");
 
-    const v = document.createElement("div");
-    v.classList.add("contact-value");
-    v.textContent = r.value;
+        const itemTitle = document.createElement("div");
+        itemTitle.classList.add("contact-title");
+        itemTitle.textContent = r.title;
 
-    text.append(t, v);
-    item.append(icon, text);
-    list.appendChild(item);
-  });
+        const value = document.createElement("div");
+        value.classList.add("contact-value");
+        value.textContent = r.value;
 
-  card.append(header, list);
-  wrapper.appendChild(card);
+        text.append(itemTitle, value);
+        item.append(icon, text);
+        list.appendChild(item);
+    });
 
-  return wrapper;
+    card.append(header, list);
+    wrapper.appendChild(card);
+    content.appendChild(wrapper);
 }
