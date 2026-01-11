@@ -1,6 +1,12 @@
 import interierImg from "../assets/restaurant_image.jpeg"
 
 export default function createHome() {
+    const content = document.getElementById("content");
+    if (!content) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("tab", "tab-home");
+
     const heroCard = document.createElement("figure");
     heroCard.classList.add("hero-card");
 
@@ -12,7 +18,7 @@ export default function createHome() {
     const img = document.createElement("img");
     img.classList.add("hero-img");
     img.src = interierImg;
-    img.alt = "Interier image"
+    img.alt = "Interier image";
 
     heroMedia.appendChild(img);
 
@@ -29,6 +35,6 @@ export default function createHome() {
 
     caption.append(label, title);
     heroCard.append(heroMedia, caption);
-
-    return heroCard;
+    wrapper.appendChild(heroCard);
+    content.appendChild(wrapper);
 }

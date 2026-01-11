@@ -1,4 +1,1 @@
-import "./styles.css";
-import initialPageLoad from "./modules/initialPageLoad";
-
-initialPageLoad();
+import "./index.js"
